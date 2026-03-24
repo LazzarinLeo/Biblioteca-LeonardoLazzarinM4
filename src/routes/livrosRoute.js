@@ -4,4 +4,4 @@ const livrosController = require('../controllers/livrosController')
 
 router.get('/', livrosController.listarLivros);
 
-module.exportas = router;
+module.exports = router;
