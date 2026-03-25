@@ -8,4 +8,18 @@ const listarLivros = async (req, res) => {
         res.status(500).json({ error: "Erro interno ao buscar os livros"});
     }
 }
-module.exports = {listarLivros}
+
+const criarLivro = async (req, res) => {
+    try{
+        const {titulo, autor} = req.body;
+        const novoLivro = await livroService.criarLivro({titulo, autor});
+
+        res.status(201).json({
+            mensagem: "Livro cadastrado",
+            livro: novoLivro,
+        })
+    } catch(erro){
+        res.status(400).json({erro: erro.message})
+    }
+}
+module.exports = {listarLivros, criarLivro}

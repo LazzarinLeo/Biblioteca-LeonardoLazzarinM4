@@ -23,9 +23,22 @@ const buscarLivros = async () => {
     return acervo;
 };
 
-const buscarLivrosPorID = async () => {
+const buscarLivrosPorID = async (id) => {
     const livro = acervo.find(item => item.id === Number(id));
     return livro || null;
 }
 
-module.exports = {buscarLivros, buscarLivrosPorID}
+const criarLivro = async => ({titulo, autor}) =>{
+     const novoLivro = {
+        id: acervo.length + 1,
+        titulo,
+        autor
+    };
+    if (!livro.titulo || !livro.autor){
+        throw new Error('Nome e Email são necessários');
+    };
+    acervo.push(novoLivro);
+    return novoLivro;
+};
+
+module.exports = {buscarLivros, buscarLivrosPorID, criarLivro}

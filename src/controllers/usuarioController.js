@@ -25,9 +25,9 @@ const listarUsuariosId = async (req, res) => {
 const criarUsuario = async (req, res) => {
     try{
         const{nome, email} = req.body;
-        const novoUsuario = await usuarioService.criarUsuario({nome, email})
+        const novoUsuario = await usuarioService.criarUsuario({nome, email});
 
-        req.status(201).json({
+        res.status(201).json({
             mensagem: 'Usuário cadastrado com sucesso!',
             usuario: novoUsuario,
         })

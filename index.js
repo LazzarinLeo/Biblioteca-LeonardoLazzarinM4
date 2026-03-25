@@ -1,19 +1,11 @@
 const express = require('express');
-const livrosRoutes = require('./src/routes/livrosRoute');
-const usuarioRoutes = require('./src/routes/usuarioRoute');
+const routes = require('./src/routes/indexRoute');
 
 const app = express();
 
 app.use(express.json());
-app.use('/livros', livrosRoutes);
-app.use('/usuarios', usuarioRoutes);
+app.use(routes);
 
-app.get('/', (req, res) => {
-    res.json({
-        sistema: 'Biblioteca M4',
-        status: 'Online'
-    });
-});
 
 const PORT = 3000;
 

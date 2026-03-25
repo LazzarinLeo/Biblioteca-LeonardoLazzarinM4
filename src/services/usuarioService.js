@@ -32,7 +32,7 @@ const criarUsuario = async => ({nome, email}) =>{
     const novoUsuario = {
         id: usuarios.length + 1,
         nome,
-        email,
+        email
     };
     usuarios.push(novoUsuario);
     return novoUsuario;

@@ -1,14 +1,19 @@
 const express = require('express');
 const router = express.Router()
-const livrosRoutes = require('./src/routes/livrosRoute')
-const usuariosRoutes = require('./src/routes/usuarioRoute')
-const { status } = require('express/lib/response')
+const livrosRoutes = require('./livrosRoute')
+const usuariosRoutes = require('./usuarioRoute')
+const {logger} = require('../middlewares/mainMiddleware')
 
 router.use('/livros', livrosRoutes)
 router.use('/usuarios', usuariosRoutes)
+router.use(logger);
 
 router.get('/', (req, res) => {
-       res.status(200).json({erro:'Bem-vindo!'})
+       res.json({
+            sistema: 'Biblioteca M4',
+            status: 'Online',
+            saudacao: 'Seja Bem-Vindo'
+       })
 });
 
 router.use((req, res) => {
