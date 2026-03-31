@@ -2,11 +2,7 @@ const express = require('express');
 const router = express.Router()
 const livrosRoutes = require('./livrosRoute')
 const usuariosRoutes = require('./usuarioRoute')
-const {logger} = require('../middlewares/mainMiddleware')
-
-router.use('/livros', livrosRoutes)
-router.use('/usuarios', usuariosRoutes)
-router.use(logger);
+const {autenticar} = require('../middlewares/mainMiddleware')
 
 router.get('/', (req, res) => {
        res.json({
@@ -15,6 +11,10 @@ router.get('/', (req, res) => {
             saudacao: 'Seja Bem-Vindo'
        })
 });
+
+router.use(autenticar)
+router.use('/livros', livrosRoutes)
+router.use('/usuarios', usuariosRoutes)
 
 router.use((req, res) => {
       res.status(404).json({erro:'Rota não encontrada'})

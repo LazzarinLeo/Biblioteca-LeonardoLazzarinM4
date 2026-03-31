@@ -1,3 +1,4 @@
 const logger = require('./logginMiddleware')
-
-module.exports = {logger}
+const errorHandler = require('./errorHandlerMiddleware')
+const autenticar = require('./authMiddlewares')
+module.exports = {logger, errorHandler, autenticar}

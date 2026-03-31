@@ -25,7 +25,7 @@ const buscarUsersPorID = async () => {
     return user || null;
 }
 
-const criarUsuario = async => ({nome, email}) =>{
+const criarUsuario = async({nome, email}) =>{
     if (!nome || !email){
         throw new Error('Nome e Email são necessários');
     }
