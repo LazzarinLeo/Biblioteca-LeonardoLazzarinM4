@@ -9,7 +9,7 @@ const autenticar = (req, res, next) => {
         })
     }
 
-    const token = autHeader.split('')[1]
+    const token = autHeader.split(' ')[1]
 
     if(token !== CHAVE_ACESSO){
          return res.status(403).json({

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router()
 const livrosRoutes = require('./livrosRoute')
 const usuariosRoutes = require('./usuarioRoute')
-const {autenticar} = require('../middlewares/mainMiddleware')
+const {autenticar, validarContentType} = require('../middlewares/mainMiddleware')
 
 router.get('/', (req, res) => {
        res.json({
@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.use(autenticar)
+router.use(validarContentType)
 router.use('/livros', livrosRoutes)
 router.use('/usuarios', usuariosRoutes)
 
